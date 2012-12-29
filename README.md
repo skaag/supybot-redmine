@@ -71,4 +71,4 @@ If you enable the bugSnarfer variable for a given channel, you won't need using 
 
 Update
 ------
-Get latest version at : https://github.com/veggiematts/supybot-redmine
+Get latest version at : https://github.com/skaag/supybot-redmine
