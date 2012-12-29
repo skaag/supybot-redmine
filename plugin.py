@@ -42,7 +42,6 @@ import sys
 import random
 
 
-
 class Redmine(callbacks.PluginRegexp):
     """
     Displays informations about a Redmine issue.
@@ -66,7 +65,7 @@ class Redmine(callbacks.PluginRegexp):
 	self.resource = Resource(self.url, filters=[self.auth])
 
     def snarfBug(self, irc, msg, match):
-        r"""\bRM\b[\s#]*(?P<id>\d+)"""
+        r"""\bbug\b[\s#]*(?P<id>\d+)"""
         channel = msg.args[0]
         if not self.registryValue('bugSnarfer', channel): return
 
@@ -118,6 +117,7 @@ class Redmine(callbacks.PluginRegexp):
 		bugmsg = bugmsg.replace('_SUBJECT_', result['issue']['subject'])
 		bugmsg = bugmsg.replace('_STATUS_', result['issue']['status']['name'])
 		bugmsg = bugmsg.replace('_PROJECT_', result['issue']['project']['name'])
+		bugmsg = bugmsg.replace('_TRACKER_', result['issue']['tracker']['name'])
 		try:
 		    bugmsg = bugmsg.replace('_CATEGORY_', result['issue']['category']['name'])
 		except Exception:
